@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
+    if (!status || status === 'unauthenticated') {
       router.push('/login')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,15 +22,17 @@ const Home: NextPage = () => {
         <meta name='description' content='A dashboard for your spotify stats' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className='container'>
-        <h1>Hello {data?.user.name}</h1>
-        <p>
-          Welcome to <span className='brand'>spotideck</span>
-        </p>
-        <button className='logout-btn' onClick={() => signOut()}>
-          Log out
-        </button>
-      </main>
+      {data?.user && (
+        <main className='container'>
+          <h1>Hello {data.user.name}</h1>
+          <p>
+            Welcome to <span className='brand'>spotideck</span>
+          </p>
+          <button className='logout-btn' onClick={() => signOut()}>
+            Log out
+          </button>
+        </main>
+      )}
     </>
   )
 }
