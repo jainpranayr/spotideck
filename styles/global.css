@@ -16,8 +16,9 @@ body {
   overflow-x: hidden;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: #121212;
+  background-color: #222;
   color: #fff;
+  font-family: sans-serif;
   font-size: 16px;
 }
 
@@ -68,4 +69,39 @@ img {
   width: 100%;
   max-width: 100%;
   vertical-align: middle;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.brand {
+  color: #1db954;
+}
+
+.login-btn {
+  display: inline-block;
+  border-radius: 30px;
+  background-color: #1db954;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 12px 32px;
+}
+
+.login-btn:hover {
+  text-decoration: none;
+  filter: brightness(1.1);
+}
+
+.logout-btn {
+  background-color: #000000b3;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 30px;
 }
