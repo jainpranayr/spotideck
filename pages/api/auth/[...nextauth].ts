@@ -3,6 +3,7 @@ import NextAuth from 'next-auth/next'
 import SpotifyProvider from 'next-auth/providers/spotify'
 
 import { JWT } from 'next-auth/jwt/types'
+import { scope } from '/constants'
 
 async function refreshAccessToken(token: JWT) {
   try {
@@ -31,7 +32,7 @@ async function refreshAccessToken(token: JWT) {
     return {
       ...token,
       accessToken: refreshedTokens.access_token,
-      accessTokenExpires: refreshedTokens.expires_at * 1000,
+      accessTokenExpires: Date.now + refreshedTokens.expires_at * 1000,
       refreshToken: refreshedTokens.refresh_token ?? token.refreshToken,
     }
   } catch (error) {
@@ -44,7 +45,6 @@ async function refreshAccessToken(token: JWT) {
   }
 }
 
-const scope = 'user-read-private user-read-email'
 export default NextAuth({
   providers: [
     SpotifyProvider({
@@ -69,7 +69,7 @@ export default NextAuth({
         return token
       }
 
-      return refreshAccessToken(token)
+      return await refreshAccessToken(token)
     },
 
     async session({ session, token }) {

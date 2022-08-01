@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
