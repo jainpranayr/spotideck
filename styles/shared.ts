@@ -10,3 +10,19 @@ export const Container = styled.main`
 export const Brand = styled.span`
   color: var(--green);
 `
+export const PrimaryBtn = styled.button`
+  display: inline-block;
+  background-color: var(--green);
+  color: var(--white);
+  border-radius: var(--border-radius-pill);
+  font-weight: 700;
+  font-size: var(--fz-lg);
+  padding: var(--spacing-sm) var(--spacing-xl);
+
+  &:hover,
+  &:focus {
+    background-color: var(--green);
+    text-decoration: none;
+    filter: brightness(1.1);
+  }
+`

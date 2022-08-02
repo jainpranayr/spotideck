@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useSession, signOut } from 'next-auth/react'
-import { Brand, Container } from '../styles/'
+import { useSession } from 'next-auth/react'
+import { Header } from '../styles/'
 
 const Home: NextPage = () => {
   const { data } = useSession()
+  console.log(data)
 
   return (
     <>
@@ -14,13 +15,19 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       {data?.user && (
-        <Container>
-          <h1>Hello {data.user.name}</h1>
-          <p>
-            Welcome to <Brand>spotideck</Brand>
-          </p>
-          <button onClick={() => signOut()}>Log out</button>
-        </Container>
+        <Header type='user' color='#9cc53a'>
+          <div className='header__inner'>
+            <img className='header__img' src={data.user.image} alt='Avatar' />
+            <div>
+              <div className='header__overline'>Profile</div>
+              <h1 className='header__name'>{data.user.name}</h1>
+              <p className='header__meta'>
+                <span>6 Playlists</span>
+                <span>1 Follower</span>
+              </p>
+            </div>
+          </div>
+        </Header>
       )}
     </>
   )
