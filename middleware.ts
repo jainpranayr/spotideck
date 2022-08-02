@@ -8,7 +8,8 @@ export default withAuth({
       if (
         pathname.startsWith('/_next') ||
         pathname === '/favicon.ico' ||
-        pathname === '/__ENV.js'
+        pathname === '/__ENV.js' ||
+        pathname.startsWith('/api/auth')
       )
         return true
 

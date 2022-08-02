@@ -1,19 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession, signOut } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 
 const Home: NextPage = () => {
-  const { status, data } = useSession()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (!status || status === 'unauthenticated') {
-      router.push('/login')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status])
+  const { data } = useSession()
 
   return (
     <>
