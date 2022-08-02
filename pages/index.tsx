@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession, signOut } from 'next-auth/react'
+import { Brand, Container } from '../styles/'
 
 const Home: NextPage = () => {
   const { data } = useSession()
@@ -13,15 +14,13 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       {data?.user && (
-        <main className='container'>
+        <Container>
           <h1>Hello {data.user.name}</h1>
           <p>
-            Welcome to <span className='brand'>spotideck</span>
+            Welcome to <Brand>spotideck</Brand>
           </p>
-          <button className='logout-btn' onClick={() => signOut()}>
-            Log out
-          </button>
-        </main>
+          <button onClick={() => signOut()}>Log out</button>
+        </Container>
       )}
     </>
   )
