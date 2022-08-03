@@ -2,10 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 import { Header } from '../styles/'
+import { useAvgColor } from '../hooks'
 
 const Home: NextPage = () => {
   const { data } = useSession()
-  console.log(data)
+  const avgColor = useAvgColor(data?.user.image)
 
   return (
     <>
@@ -15,9 +16,13 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       {data?.user && (
-        <Header type='user' color='#9cc53a'>
+        <Header type='user' color={avgColor}>
           <div className='header__inner'>
-            <img className='header__img' src={data.user.image} alt='Avatar' />
+            <img
+              className='header__img'
+              src={data.user.image || '/placeholder.svg'}
+              alt='Avatar'
+            />
             <div>
               <div className='header__overline'>Profile</div>
               <h1 className='header__name'>{data.user.name}</h1>

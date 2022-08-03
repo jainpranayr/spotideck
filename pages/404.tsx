@@ -3,17 +3,16 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { Container, PrimaryBtn } from '../styles/'
 
+const Heading = styled.h1`
+  font-size: 48px;
+  margin-bottom: 16px;
+`
+const SubHeading = styled.p`
+  margin-bottom: 40px;
+`
+
 const Login: NextPage = () => {
   const router = useRouter()
-
-  const Heading = styled.h1`
-    font-size: 48px;
-    margin-bottom: 16px;
-  `
-
-  const SubHeading = styled.p`
-    margin-bottom: 40px;
-  `
 
   return (
     <Container>
