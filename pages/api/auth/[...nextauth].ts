@@ -3,7 +3,7 @@ import NextAuth from 'next-auth/next'
 import SpotifyProvider from 'next-auth/providers/spotify'
 
 import { JWT } from 'next-auth/jwt/types'
-import { scope } from '/constants'
+import { scope } from '../../../lib'
 
 async function refreshAccessToken(token: JWT) {
   try {
