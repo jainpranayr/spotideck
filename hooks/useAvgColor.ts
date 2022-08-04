@@ -1,11 +1,11 @@
-import { useColor } from 'color-thief-react'
+import { usePalette } from 'color-thief-react'
 
 const useAvgColor = (src: string): string => {
-  const { data: avgColor } = useColor(src, 'hex', {
+  const { data: avgColor } = usePalette(src, 10, 'rgbString', {
     crossOrigin: 'anonymous',
   })
 
-  return avgColor || '#535353'
+  return avgColor?.[2] || '#535353'
 }
 
 export default useAvgColor

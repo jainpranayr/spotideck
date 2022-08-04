@@ -46,6 +46,8 @@ const Header = styled.header<IHeader>`
 
   img.header__img {
     width: 20%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     max-width: 250px;
     min-width: 120px;
     margin-right: var(--spacing-lg);
