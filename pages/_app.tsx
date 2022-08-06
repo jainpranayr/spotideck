@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import { SessionProvider, signOut } from 'next-auth/react'
+import { SessionProvider } from 'next-auth/react'
 import { GlobalStyles } from '../styles'
 import { LogOutBtn } from '../components'
 
