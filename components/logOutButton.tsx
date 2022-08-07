@@ -1,4 +1,3 @@
-import { NextPage } from 'next'
 import { signOut } from 'next-auth/react'
 import styled from 'styled-components'
 
@@ -13,12 +12,13 @@ const LogoutButton = styled.button`
   font-weight: 700;
   border-radius: var(--border-radius-pill);
   z-index: 10;
+
   @media (min-width: 768px) {
     right: var(--spacing-lg);
   }
 `
 
-const LogOutBtn: NextPage = () => {
+const LogOutBtn: React.FC = () => {
   return (
     <>
       <LogoutButton onClick={() => signOut()}>Log Out</LogoutButton>

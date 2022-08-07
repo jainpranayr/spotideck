@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { customGet } from '../lib'
-import { Artists, User, Playlists } from '../types'
+import { User, Playlists, FollowedArtists } from '../types'
 
 const getUser = async (): Promise<User> => {
   return await customGet('/me')
@@ -10,7 +10,7 @@ const getPlaylists = async (): Promise<Playlists> => {
   return await customGet('/me/playlists')
 }
 
-const getFollowing = async (): Promise<Artists> => {
+const getFollowing = async (): Promise<FollowedArtists> => {
   return await customGet('/me/following?type=artist')
 }
 

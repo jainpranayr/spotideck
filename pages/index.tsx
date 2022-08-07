@@ -5,11 +5,11 @@ import { useAvgColor } from '../hooks'
 import { LogOutBtn } from '../components'
 import { useEffect, useState } from 'react'
 import { getUserInfo } from '../services'
-import { User, Playlists, Artists } from '../types'
+import { User, Playlists, FollowedArtists } from '../types'
 
 const Home: NextPage = () => {
   const [user, setUser] = useState<User>()
-  const [followedArtists, setFollowedArtists] = useState<Artists>()
+  const [followedArtists, setFollowedArtists] = useState<FollowedArtists>()
   const [playlists, setPlaylists] = useState<Playlists>()
 
   useEffect(() => {
@@ -24,12 +24,12 @@ const Home: NextPage = () => {
     fetchData()
   }, [])
 
-  const avgColor = useAvgColor(user?.images[0].url || '')
+  const avgColor = useAvgColor(user?.images?.[0]?.url || '')
 
   return (
     <>
       <Head>
-        <title>spotideck</title>
+        <title>spotideck - {user?.display_name}</title>
         <meta name='description' content='A dashboard for your spotify stats' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
             <div className='header__inner'>
               <img
                 className='header__img'
-                src={user.images[0]?.url || '/placeholder.svg'}
+                src={user.images?.[0]?.url || '/placeholder.svg'}
                 alt='Avatar'
               />
               <div>
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
                     {user.followers?.total} Follower
                     {user.followers?.total !== 1 ? 's' : ''}
                   </span>
-                  <span>{followedArtists?.artists?.total} Following</span>
+                  <span>{followedArtists.artists?.total} Following</span>
                 </p>
               </div>
             </div>
