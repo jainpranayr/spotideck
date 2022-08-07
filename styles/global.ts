@@ -55,6 +55,15 @@ const GlobalStyles = styled.createGlobalStyle`
     &:focus {
       text-decoration: underline;
     }
+    .overflow-ellipsis {
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: unset;
+      word-break: break-all;
+    }
   }
 
   button {
@@ -84,6 +93,23 @@ const GlobalStyles = styled.createGlobalStyle`
   main {
     position: relative;
     padding: var(--spacing-xxl) 0;
+  }
+
+  .overflow-ellipsis {
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: unset;
+    word-break: break-all;
+  }
+
+  .empty-notice {
+    color: var(--grey);
+    font-size: var(--fz-lg);
+    text-align: center;
+    padding: var(--spacing-xxl);
   }
 `
 

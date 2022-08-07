@@ -58,6 +58,10 @@ const Header = styled.header<IHeader>`
     @media (min-width: 768px) {
       margin-right: var(--spacing-xl);
     }
+
+    @media (max-width: 476px) {
+      display: none;
+    }
   }
 
   .header__overline {
