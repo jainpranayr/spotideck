@@ -6,6 +6,10 @@ import { Container, PrimaryBtn } from '../styles/'
 const Heading = styled.h1`
   font-size: 48px;
   margin-bottom: 16px;
+
+  @media (max-width: 476px) {
+    font-size: 32px;
+  }
 `
 const SubHeading = styled.p`
   margin-bottom: 40px;

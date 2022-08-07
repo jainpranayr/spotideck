@@ -6,6 +6,7 @@ export const Container = styled.main`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  text-align: center;
 `
 export const Brand = styled.span`
   color: var(--green);
