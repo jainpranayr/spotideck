@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { signOut, useSession } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import styled from 'styled-components'
 
 const LogoutButton = styled.button`
@@ -19,13 +19,9 @@ const LogoutButton = styled.button`
 `
 
 const LogOutBtn: NextPage = () => {
-  const { data } = useSession()
-
   return (
     <>
-      {data?.user && (
-        <LogoutButton onClick={() => signOut()}>Log Out</LogoutButton>
-      )}
+      <LogoutButton onClick={() => signOut()}>Log Out</LogoutButton>
     </>
   )
 }

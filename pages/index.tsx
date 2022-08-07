@@ -1,12 +1,30 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useSession } from 'next-auth/react'
 import { Header } from '../styles/'
 import { useAvgColor } from '../hooks'
+import { LogOutBtn } from '../components'
+import { useEffect, useState } from 'react'
+import { getUserInfo } from '../services'
+import { User, Playlists, Artists } from '../types'
 
 const Home: NextPage = () => {
-  const { data } = useSession()
-  const avgColor = useAvgColor(data?.user.image)
+  const [user, setUser] = useState<User>()
+  const [followedArtists, setFollowedArtists] = useState<Artists>()
+  const [playlists, setPlaylists] = useState<Playlists>()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { user, followedArtists, playlists } = await getUserInfo()
+
+      setUser(user)
+      setFollowedArtists(followedArtists)
+      setPlaylists(playlists)
+    }
+
+    fetchData()
+  }, [])
+
+  const avgColor = useAvgColor(user?.images[0].url || '')
 
   return (
     <>
@@ -15,24 +33,34 @@ const Home: NextPage = () => {
         <meta name='description' content='A dashboard for your spotify stats' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      {data?.user && (
-        <Header type='user' color={avgColor}>
-          <div className='header__inner'>
-            <img
-              className='header__img'
-              src={data.user.image || '/placeholder.svg'}
-              alt='Avatar'
-            />
-            <div>
-              <div className='header__overline'>Profile</div>
-              <h1 className='header__name'>{data.user.name}</h1>
-              <p className='header__meta'>
-                <span>6 Playlists</span>
-                <span>1 Follower</span>
-              </p>
+      {user && playlists && followedArtists && (
+        <>
+          <LogOutBtn />
+          <Header type='user' color={avgColor}>
+            <div className='header__inner'>
+              <img
+                className='header__img'
+                src={user.images[0]?.url || '/placeholder.svg'}
+                alt='Avatar'
+              />
+              <div>
+                <div className='header__overline'>Profile</div>
+                <h1 className='header__name'>{user.display_name}</h1>
+                <p className='header__meta'>
+                  <span>
+                    {playlists.total} Playlist
+                    {playlists.total !== 1 ? 's' : ''}{' '}
+                  </span>
+                  <span>
+                    {user.followers?.total} Follower
+                    {user.followers?.total !== 1 ? 's' : ''}
+                  </span>
+                  <span>{followedArtists?.artists?.total} Following</span>
+                </p>
+              </div>
             </div>
-          </div>
-        </Header>
+          </Header>
+        </>
       )}
     </>
   )
