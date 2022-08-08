@@ -78,7 +78,7 @@ const Header = styled.header<IHeader>`
     margin: 0 0 var(--spacing-xs) 0;
 
     @media (min-width: 768px) {
-      margin: 0 0 var(--spacing-xs) -5px;
+      margin: 0 0 var(--spacing-sm) -5px;
     }
   }
 
