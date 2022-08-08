@@ -53,6 +53,8 @@ export default NextAuth({
       authorization: `https://accounts.spotify.com/authorize?scope=${scope}`,
     }),
   ],
+  
+  secret: process.env.SECRET
 
   callbacks: {
     async jwt({ token, user, account }) {
