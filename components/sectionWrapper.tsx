@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 interface Props {
   children: ReactNode
   title: string
-  seeAllLink: string
+  seeAllLink?: string
   breadCrumb?: boolean
 }
 

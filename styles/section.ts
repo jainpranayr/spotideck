@@ -32,7 +32,7 @@ const Section = styled.section`
     font-size: var(--fz-xxl);
   }
 
-  .section__breadcrumb {
+  .section__breadCrumb {
     display: flex;
     color: var(--light-grey);
 

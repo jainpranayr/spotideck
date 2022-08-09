@@ -23,7 +23,6 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    setLoading(true)
     const fetchData = async () => {
       const userInfo = await getUserInfo()
       console.log(typeof userInfo)

@@ -14,12 +14,12 @@ const getFollowing = async (): Promise<FollowedArtists> => {
   return await customGet('/me/following?type=artist')
 }
 
-const getTopArtistsShort = async (): Promise<Artists> => {
-  return await customGet('/me/top/artists?limit=50&time_range=short_term')
+export const getTopArtists = (time_range = 'short_term'): Promise<Artists> => {
+  return customGet(`/me/top/artists?time_range=${time_range}`)
 }
 
-const getTopTracksShort = async (): Promise<Tracks> => {
-  return await customGet('/me/top/tracks?limit=50&time_range=short_term')
+export const getTopTracks = (time_range = 'short_term'): Promise<Tracks> => {
+  return customGet(`/me/top/tracks?time_range=${time_range}`)
 }
 
 export const getUserInfo = async (): Promise<{
@@ -34,8 +34,8 @@ export const getUserInfo = async (): Promise<{
       getUser(),
       getFollowing(),
       getPlaylists(),
-      getTopArtistsShort(),
-      getTopTracksShort(),
+      getTopArtists(),
+      getTopTracks(),
     ])
     .then(
       axios.spread(
