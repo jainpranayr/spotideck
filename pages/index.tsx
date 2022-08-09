@@ -4,6 +4,7 @@ import { Header } from '../styles/'
 import { useAvgColor } from '../hooks'
 import {
   ArtistsGrid,
+  Bars,
   LogOutBtn,
   PlaylistsGrid,
   Section,
@@ -19,17 +20,23 @@ const Home: NextPage = () => {
   const [playlists, setPlaylists] = useState<Playlists>()
   const [topArtists, setTopArtists] = useState<Artists>()
   const [topTracks, setTopTracks] = useState<Tracks>()
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
+    setLoading(true)
     const fetchData = async () => {
+      const userInfo = await getUserInfo()
+      console.log(typeof userInfo)
+
       const { user, followedArtists, playlists, topArtists, topTracks } =
-        await getUserInfo()
+        userInfo
 
       setUser(user)
       setFollowedArtists(followedArtists)
       setPlaylists(playlists)
       setTopArtists(topArtists)
       setTopTracks(topTracks)
+      setLoading(false)
     }
 
     fetchData()
@@ -47,6 +54,9 @@ const Home: NextPage = () => {
         <meta name='description' content='A dashboard for your spotify stats' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
+      {loading && <Bars />}
+
       {user && playlists && followedArtists && (
         <>
           <LogOutBtn />

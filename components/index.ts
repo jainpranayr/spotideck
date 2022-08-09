@@ -1,5 +1,6 @@
 export { default as LogOutBtn } from './logOutButton'
 export { default as Section } from './sectionWrapper'
-export { default as ArtistsGrid } from './ArtistsGrid'
-export { default as PlaylistsGrid } from './PlaylistsGrid'
+export { default as ArtistsGrid } from './artistsGrid'
+export { default as PlaylistsGrid } from './playlistsGrid'
 export { default as TrackList } from './tracksList'
+export { default as Bars } from './bars'
