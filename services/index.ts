@@ -6,7 +6,7 @@ const getUser = async (): Promise<User> => {
   return await customGet('/me')
 }
 
-const getPlaylists = async (): Promise<Playlists> => {
+export const getPlaylists = async (): Promise<Playlists> => {
   return await customGet('/me/playlists')
 }
 

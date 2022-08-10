@@ -9,7 +9,7 @@ interface Props {
 const ArtistsGrid: React.FC<Props> = ({ artists, limit }) => {
   return (
     <>
-      {artists && artists.items.length ? (
+      {artists && artists.items?.length ? (
         <Grid type='artist'>
           {artists.items.slice(0, limit).map((artist, i) => (
             <li className='grid__item' key={i}>

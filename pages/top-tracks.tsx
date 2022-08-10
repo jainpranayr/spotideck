@@ -34,7 +34,7 @@ const TopTracks: NextPage = () => {
 
       {topTracks && (
         <main>
-          <Section title='Top Artists' breadCrumb={true}>
+          <Section title='Top Tracks' breadCrumb={true}>
             <TimeRangeButtons
               activeRange={activeRange}
               setActiveRange={setActiveRange}
