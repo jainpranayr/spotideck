@@ -1,6 +1,12 @@
 import { NextPage } from 'next'
 import { useState, useEffect } from 'react'
-import { Section, TimeRangeButtons, ArtistsGrid, Bars } from '../components'
+import {
+  Section,
+  TimeRangeButtons,
+  ArtistsGrid,
+  Bars,
+  LogOutBtn,
+} from '../components'
 import { getTopArtists } from '../services'
 import { Artists } from '../types'
 
@@ -8,8 +14,6 @@ const TopTracks: NextPage = () => {
   const [topArtists, setTopArtists] = useState<Artists>()
   const [activeRange, setActiveRange] = useState<string>('short')
   const [loading, setLoading] = useState<boolean>(true)
-
-  console.log(activeRange)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,8 +25,10 @@ const TopTracks: NextPage = () => {
   }, [activeRange])
 
   return (
-    <>
+    <div className='page'>
       {loading && <Bars />}
+
+      <LogOutBtn />
 
       {topArtists && (
         <main>
@@ -35,7 +41,7 @@ const TopTracks: NextPage = () => {
           </Section>
         </main>
       )}
-    </>
+    </div>
   )
 }
 

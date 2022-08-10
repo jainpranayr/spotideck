@@ -95,6 +95,10 @@ const GlobalStyles = styled.createGlobalStyle`
     padding: var(--spacing-xxl) 0;
   }
 
+  .page {
+    padding: var(--spacing-xxl) 0;
+  }
+
   .overflow-ellipsis {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

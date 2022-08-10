@@ -30,6 +30,10 @@ const Section = styled.section`
     display: flex;
     margin: 0;
     font-size: var(--fz-xxl);
+
+    @media (max-width: 476px) {
+      font-size: var(--fz-lg);
+    }
   }
 
   .section__breadCrumb {

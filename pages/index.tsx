@@ -25,7 +25,6 @@ const Home: NextPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const userInfo = await getUserInfo()
-      console.log(typeof userInfo)
 
       const { user, followedArtists, playlists, topArtists, topTracks } =
         userInfo
