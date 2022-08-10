@@ -87,13 +87,13 @@ const Home: NextPage = () => {
       {topArtists && topTracks && playlists && (
         <main>
           <Section title='Top artists this month' seeAllLink='/top-artists'>
-            <ArtistsGrid artists={topArtists} />
+            <ArtistsGrid artists={topArtists} limit={10} />
           </Section>
           <Section title='Top tracks this month' seeAllLink='/top-tracks'>
-            <TrackList tracks={topTracks} />
+            <TrackList tracks={topTracks} limit={10} />
           </Section>
           <Section title='Public Playlists' seeAllLink='/playlists'>
-            <PlaylistsGrid playlists={playlists} />
+            <PlaylistsGrid playlists={playlists} limit={10} />
           </Section>
         </main>
       )}

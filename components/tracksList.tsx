@@ -1,16 +1,18 @@
+import Link from 'next/link'
 import { formatDuration } from '../lib'
 import { List } from '../styles'
 import { Tracks } from '../types'
 
 interface Props {
   tracks: Tracks
+  limit?: number
 }
 
-const TrackList: React.FC<Props> = ({ tracks }) => (
+const TrackList: React.FC<Props> = ({ tracks, limit }) => (
   <>
     {tracks ? (
       <List>
-        {tracks.items.slice(0, 10)?.map((track, i) => (
+        {tracks.items.slice(0, limit)?.map((track, i) => (
           <li className='track__item' key={i}>
             <div className='track__item__num'>{i + 1}</div>
             <div className='track__item__title-group'>
@@ -23,10 +25,12 @@ const TrackList: React.FC<Props> = ({ tracks }) => (
                 </div>
                 <div className='track__item__artist overflow-ellipsis'>
                   {track.artists?.map((artist, i) => (
-                    <span key={i}>
-                      {artist.name}
-                      {i !== track.artists?.length! - 1 && ', '}
-                    </span>
+                    <Link href={artist.external_urls.spotify} key={i}>
+                      <span>
+                        {artist.name}
+                        {i !== track.artists?.length! - 1 && ', '}
+                      </span>
+                    </Link>
                   ))}
                 </div>
               </div>

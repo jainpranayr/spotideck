@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react'
 import {
   Section,
   TimeRangeButtons,
-  ArtistsGrid,
   Bars,
   LogOutBtn,
+  TrackList,
 } from '../components'
-import { getTopArtists } from '../services'
-import { Artists } from '../types'
+import { getTopTracks } from '../services'
+import { Tracks } from '../types'
 
 const TopTracks: NextPage = () => {
-  const [topArtists, setTopArtists] = useState<Artists>()
+  const [topTracks, setTopTracks] = useState<Tracks>()
   const [activeRange, setActiveRange] = useState<'short' | 'medium' | 'long'>(
     'short'
   )
@@ -19,7 +19,7 @@ const TopTracks: NextPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setTopArtists(await getTopArtists(`${activeRange}_term`))
+      setTopTracks(await getTopTracks(`${activeRange}_term`))
       setLoading(false)
     }
 
@@ -32,14 +32,14 @@ const TopTracks: NextPage = () => {
 
       <LogOutBtn />
 
-      {topArtists && (
+      {topTracks && (
         <main>
           <Section title='Top Artists' breadCrumb={true}>
             <TimeRangeButtons
               activeRange={activeRange}
               setActiveRange={setActiveRange}
             />
-            <ArtistsGrid artists={topArtists} />
+            <TrackList tracks={topTracks} />
           </Section>
         </main>
       )}

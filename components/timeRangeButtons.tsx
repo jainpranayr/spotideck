@@ -3,7 +3,7 @@ import { RangeButtons } from '../styles'
 
 interface Props {
   activeRange: string
-  setActiveRange: Dispatch<SetStateAction<string>>
+  setActiveRange: Dispatch<SetStateAction<'short' | 'medium' | 'long'>>
 }
 
 const TimeRangeButtons: React.FC<Props> = ({ activeRange, setActiveRange }) => {

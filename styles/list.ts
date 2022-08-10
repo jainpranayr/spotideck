@@ -55,6 +55,13 @@ const List = styled.ul`
     font-size: var(--fz-md);
   }
 
+  .track__item__artist {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
   .track__item__album {
     display: none;
 

@@ -4,13 +4,14 @@ import { Playlists } from '../types'
 
 interface Props {
   playlists: Playlists
+  limit?: number
 }
 
-const PlaylistsGrid: React.FC<Props> = ({ playlists }) => (
+const PlaylistsGrid: React.FC<Props> = ({ playlists, limit }) => (
   <>
     {playlists && playlists.items.length ? (
       <Grid>
-        {playlists.items.slice(0, 10).map((playlist, i) => (
+        {playlists.items.slice(0, limit).map((playlist, i) => (
           <li className='grid__item' key={i}>
             <Link href={`/playlists/${playlist.id}`} passHref>
               <div className='grid__item__inner'>

@@ -73,7 +73,7 @@ const GlobalStyles = styled.createGlobalStyle`
     border-radius: var(--border-radius-pill);
     background-color: rgba(0, 0, 0, 0.7);
     color: var(--white);
-    font-size: var(--fz-sm);
+    font-size: var(--fz-xxs);
     font-weight: 700;
     padding: var(--spacing-xs) var(--spacing-sm);
 
@@ -81,6 +81,10 @@ const GlobalStyles = styled.createGlobalStyle`
     &:focus {
       background-color: var(--dark-grey);
       outline: 0;
+    }
+
+    @media (min-width: 768px) {
+      font-size: var(--fz-sm);
     }
   }
 
@@ -96,7 +100,7 @@ const GlobalStyles = styled.createGlobalStyle`
   }
 
   .page {
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xl) 0;
   }
 
   .overflow-ellipsis {
