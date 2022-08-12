@@ -80,6 +80,7 @@ const Header = styled.header<IHeader>`
     display: flex;
     align-items: center;
     font-size: var(--fz-sm);
+    font-weight: 700;
     color: var(--white);
     margin: 0;
 

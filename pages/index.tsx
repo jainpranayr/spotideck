@@ -86,7 +86,7 @@ const Home: NextPage = () => {
       )}
       {topArtists && topTracks && playlists && (
         <main>
-          <Section title='Top artists this month' seeAllLink='/top-artists'>
+          <Section title='Top artists this month' seeAllLink='/artists'>
             <ArtistsGrid artists={topArtists} limit={10} />
           </Section>
           <Section title='Top tracks this month' seeAllLink='/top-tracks'>

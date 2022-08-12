@@ -34,6 +34,10 @@ export const getAudioFeaturesForTracks = (ids: string[]) => {
   return customGet(`/audio-features?ids=${ids}`)
 }
 
+export const getArtist = (artist_id: string) => {
+  return customGet(`/artists/${artist_id}`)
+}
+
 export const getUserInfo = async (): Promise<{
   user: User
   followedArtists: FollowedArtists

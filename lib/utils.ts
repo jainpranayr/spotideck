@@ -28,3 +28,6 @@ export const formatDuration = (ms: number) => {
   const seconds = Math.floor((ms % 60000) / 1000)
   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
 }
+
+export const formatWithCommas = (n: number) =>
+  n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')

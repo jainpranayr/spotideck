@@ -6,9 +6,9 @@ import {
   ArtistsGrid,
   Bars,
   LogOutBtn,
-} from '../components'
-import { getTopArtists } from '../services'
-import { Artists } from '../types'
+} from '../../components'
+import { getTopArtists } from '../../services'
+import { Artists } from '../../types'
 
 const TopTracks: NextPage = () => {
   const [topArtists, setTopArtists] = useState<Artists>()

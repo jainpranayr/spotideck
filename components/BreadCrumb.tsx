@@ -7,10 +7,6 @@ interface BreadCrumb {
   href: string
 }
 
-const convertBreadcrumb = (path: string) => {
-  return path.replace(/-/g, ' ').replace(/^.{22}$/, 'playlist')
-}
-
 const Breadcrumb = () => {
   const router = useRouter()
   const [breadcrumbs, setBreadcrumbs] = useState<BreadCrumb[]>()
@@ -19,6 +15,7 @@ const Breadcrumb = () => {
     if (router) {
       const linkPath = router.asPath.split('/')
       linkPath.shift()
+      linkPath[linkPath.length - 1] = linkPath[linkPath.length - 2].slice(0, -1)
 
       const pathArray = linkPath.map((path, i) => {
         return {
@@ -30,8 +27,6 @@ const Breadcrumb = () => {
       setBreadcrumbs(pathArray)
     }
   }, [router])
-
-  console.log(breadcrumbs)
 
   if (!breadcrumbs) {
     return null
@@ -45,9 +40,7 @@ const Breadcrumb = () => {
       {breadcrumbs.map((breadcrumb, i) => {
         return (
           <span className='section__breadCrumb' key={i}>
-            <Link href={breadcrumb.href}>
-              {convertBreadcrumb(breadcrumb.title)}
-            </Link>
+            <Link href={breadcrumb.href}>{breadcrumb.title}</Link>
           </span>
         )
       })}
