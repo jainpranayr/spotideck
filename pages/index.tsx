@@ -90,7 +90,7 @@ const Home: NextPage = () => {
             <ArtistsGrid artists={topArtists} limit={10} />
           </Section>
           <Section title='Top tracks this month' seeAllLink='/top-tracks'>
-            <TrackList tracks={topTracks} limit={10} />
+            <TrackList tracks={topTracks.items} limit={10} />
           </Section>
           <Section title='Public Playlists' seeAllLink='/playlists'>
             <PlaylistsGrid playlists={playlists} limit={10} />

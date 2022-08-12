@@ -11,13 +11,7 @@ const Header = styled.header<IHeader>`
   position: relative;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
   background-color: ${props => props.color || 'var(--grey)'};
-  height: 30vh;
-  max-height: 500px;
-  min-height: 250px;
-
-  @media (min-width: 768px) {
-    min-height: 340px;
-  }
+  height: fit-content;
 
   &:after {
     content: '';
@@ -72,7 +66,7 @@ const Header = styled.header<IHeader>`
   }
 
   h1.header__name {
-    font-size: clamp(2.5rem, 10vw, 6rem);
+    font-size: clamp(2.5rem, 10vw, 5rem);
     font-weight: 900;
     line-height: 1;
     margin: 0 0 var(--spacing-xs) 0;

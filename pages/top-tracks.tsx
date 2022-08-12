@@ -39,7 +39,7 @@ const TopTracks: NextPage = () => {
               activeRange={activeRange}
               setActiveRange={setActiveRange}
             />
-            <TrackList tracks={topTracks} />
+            <TrackList tracks={topTracks.items} />
           </Section>
         </main>
       )}

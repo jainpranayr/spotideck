@@ -22,6 +22,18 @@ export const getTopTracks = (time_range = 'short_term'): Promise<Tracks> => {
   return customGet(`/me/top/tracks?time_range=${time_range}`)
 }
 
+export const getPlaylistById = (playlist_id: string) => {
+  return customGet(`/playlists/${playlist_id}`)
+}
+
+export const getTracksOfAPlaylist = (playlist_id: string) => {
+  return customGet(`/playlists/${playlist_id}/tracks`)
+}
+
+export const getAudioFeaturesForTracks = (ids: string[]) => {
+  return customGet(`/audio-features?ids=${ids}`)
+}
+
 export const getUserInfo = async (): Promise<{
   user: User
   followedArtists: FollowedArtists

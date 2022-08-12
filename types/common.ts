@@ -33,11 +33,6 @@ export interface Owner {
   uri: string
 }
 
-export interface Tracks {
-  href: string
-  total: number
-}
-
 export interface ExternalIds {
   isrc: string
 }
@@ -51,4 +46,8 @@ export interface Context<T> {
   previous?: string | null
   total: number
   cursors?: Cursors
+}
+
+export interface VideoThumbnail {
+  url?: null
 }

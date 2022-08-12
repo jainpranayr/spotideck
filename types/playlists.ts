@@ -1,11 +1,13 @@
-import { ExternalUrls, ImagesEntity, Owner, Context, Tracks } from './common'
+import { ExternalUrls, ImagesEntity, Owner, Context, Followers } from './common'
+import { Tracks } from './tracks'
 
-interface Playlists extends Context<ItemsEntity> {}
+export interface Playlists extends Context<Playlist> {}
 
-interface ItemsEntity {
+export interface Playlist {
   collaborative: boolean
   description: string
   external_urls: ExternalUrls
+  followers: Followers
   href: string
   id: string
   images?: ImagesEntity[] | null
@@ -18,5 +20,3 @@ interface ItemsEntity {
   type: string
   uri: string
 }
-
-export default Playlists
