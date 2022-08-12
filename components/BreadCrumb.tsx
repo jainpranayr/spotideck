@@ -15,7 +15,6 @@ const Breadcrumb = () => {
     if (router) {
       const linkPath = router.asPath.split('/')
       linkPath.shift()
-      linkPath[linkPath.length - 1] = linkPath[linkPath.length - 2].slice(0, -1)
 
       const pathArray = linkPath.map((path, i) => {
         return {
