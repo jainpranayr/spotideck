@@ -7,7 +7,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
       <SessionProvider session={session}>
-        <NextNProgress color='#1db954' height={4} />
+        <NextNProgress
+          color='#1db954'
+          height={4}
+          options={{ showSpinner: false }}
+        />
         <GlobalStyles />
         <Component {...pageProps} />
       </SessionProvider>

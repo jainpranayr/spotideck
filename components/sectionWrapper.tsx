@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Section } from '../styles'
 import { ReactNode } from 'react'
+import Breadcrumbs from './BreadCrumb'
 
 interface Props {
   children: ReactNode
@@ -13,14 +14,7 @@ const SectionWrapper = ({ children, title, seeAllLink, breadCrumb }: Props) => (
   <Section>
     <div className='section__inner'>
       <div className='section__top'>
-        <h2 className='section__heading'>
-          {breadCrumb && (
-            <span className='section__breadCrumb'>
-              <Link href='/'>Profile</Link>
-            </span>
-          )}
-          <span>{title}</span>
-        </h2>
+        <h2 className='section__heading'>{breadCrumb && <Breadcrumbs />}</h2>
         {seeAllLink && (
           <Link href={seeAllLink} className='section__see-all'>
             See All

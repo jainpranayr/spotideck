@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 
-interface Props {
-  active: boolean
-}
-
-const DropDown = styled.div<Props>`
+const DropDown = styled.div`
   position: absolute;
   top: 0;
   right: var(--spacing-md);
@@ -29,12 +25,13 @@ const DropDown = styled.div<Props>`
   select {
     -webkit-appearance: none;
     appearance: none;
-    background-color: ${props =>
-      props.active ? 'rgba(255,255,255,0.1)' : 'transparent'};
+    outline: none;
+    background-color: var(--near-black);
     color: white;
     border: 0;
     border-radius: var(--border-radius-subtle);
     font-size: var(--fz-sm);
+    font-weight: 500;
     font-family: inherit;
     padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs)
       var(--spacing-sm);

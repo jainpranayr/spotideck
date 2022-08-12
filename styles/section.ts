@@ -39,6 +39,7 @@ const Section = styled.section`
   .section__breadCrumb {
     display: flex;
     color: var(--light-grey);
+    text-transform: capitalize;
 
     &::after {
       content: '/';
@@ -50,6 +51,21 @@ const Section = styled.section`
       &:hover,
       &:focus {
         color: var(--white);
+      }
+    }
+
+    &:last-of-type {
+      color: var(--white);
+
+      a {
+        &:hover,
+        &:focus {
+          text-decoration: none;
+        }
+      }
+
+      &::after {
+        content: '';
       }
     }
   }

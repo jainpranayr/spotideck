@@ -130,7 +130,7 @@ const Playlist: NextPage = () => {
 
           <main>
             <Section title='Playlist' breadCrumb={true}>
-              <Dropdown active={!!sortValue}>
+              <Dropdown>
                 <select
                   name='track-order'
                   id='order-select'
