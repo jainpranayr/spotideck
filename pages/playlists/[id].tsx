@@ -22,13 +22,15 @@ const Playlist: NextPage = () => {
 
   useEffect(() => {
     const fetchPlaylist = async () => {
-      setPlaylist(await getPlaylistById(typeof id === 'string' ? id : ''))
+      setPlaylist(
+        await getPlaylistById(typeof id === 'string' ? id.slice(1) : '')
+      )
       setLoading(false)
     }
 
     const fetchTracks = async () => {
       setPlaylistTracks(
-        await getTracksOfAPlaylist(typeof id === 'string' ? id : '')
+        await getTracksOfAPlaylist(typeof id === 'string' ? id.slice(1) : '')
       )
     }
 
@@ -144,7 +146,11 @@ const Playlist: NextPage = () => {
                 </select>
               </Dropdown>
 
-              {sortedTracks ? <TrackList tracks={sortedTracks} /> : <Bars />}
+              {sortedTracks ? (
+                <TrackList tracks={sortedTracks} />
+              ) : (
+                <p className='empty-notice'>No Tracks Found</p>
+              )}
             </Section>
           </main>
         </>

@@ -7,6 +7,15 @@ interface BreadCrumb {
   href: string
 }
 
+const convertBreadcrumb = (path: string) => {
+  if (path.match(/^.{23}$/) && path.startsWith('P')) {
+    path = 'Playlist'
+  } else if (path.match(/^.{23}$/) && path.startsWith('A')) {
+    path = 'Artist'
+  }
+  return path
+}
+
 const Breadcrumb = () => {
   const router = useRouter()
   const [breadcrumbs, setBreadcrumbs] = useState<BreadCrumb[]>()
@@ -32,18 +41,20 @@ const Breadcrumb = () => {
   }
 
   return (
-    <h2 className='section__heading'>
+    <>
       <span className='section__breadCrumb'>
         <Link href='/'>Profile</Link>
       </span>
       {breadcrumbs.map((breadcrumb, i) => {
         return (
           <span className='section__breadCrumb' key={i}>
-            <Link href={breadcrumb.href}>{breadcrumb.title}</Link>
+            <Link href={breadcrumb.href}>
+              {convertBreadcrumb(breadcrumb.title)}
+            </Link>
           </span>
         )
       })}
-    </h2>
+    </>
   )
 }
 

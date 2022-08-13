@@ -13,7 +13,7 @@ const PlaylistsGrid: React.FC<Props> = ({ playlists, limit }) => (
       <Grid>
         {playlists.items.slice(0, limit).map((playlist, i) => (
           <li className='grid__item' key={i}>
-            <Link href={`/playlists/${playlist.id}`} passHref>
+            <Link href={`/playlists/${'P' + playlist.id}`} passHref>
               <div className='grid__item__inner'>
                 <div className='grid__item__img'>
                   <img src={playlist.images?.[0].url} alt={playlist.name} />

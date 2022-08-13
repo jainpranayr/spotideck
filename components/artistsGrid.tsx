@@ -14,7 +14,7 @@ const ArtistsGrid: React.FC<Props> = ({ artists, limit }) => {
         <Grid type='artist'>
           {artists.items.slice(0, limit).map((artist, i) => (
             <li className='grid__item' key={i}>
-              <Link href={`/artists/${artist.id}`} passHref>
+              <Link href={`/artists/${'A' + artist.id}`} passHref>
                 <div className='grid__item__inner'>
                   {artist.images?.[0] && (
                     <div className='grid__item__img'>

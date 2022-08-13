@@ -16,7 +16,7 @@ const Artist: NextPage = () => {
 
   useEffect(() => {
     const fetchArtist = async () => {
-      SetArtist(await getArtist(typeof id === 'string' ? id : ''))
+      SetArtist(await getArtist(typeof id === 'string' ? id.slice(1) : ''))
       setLoading(false)
     }
 
@@ -24,7 +24,6 @@ const Artist: NextPage = () => {
   }, [id])
 
   const avgColor = useAvgColor(artist?.images?.[0]?.url || '')
-  console.log(artist)
 
   return (
     <>
