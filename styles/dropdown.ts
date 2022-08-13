@@ -2,12 +2,13 @@ import styled from 'styled-components'
 
 const DropDown = styled.div`
   position: absolute;
-  top: 0;
-  right: var(--spacing-md);
+  top: -1px;
+  right: var(--spacing-xxl);
   z-index: 1;
 
-  @media (min-width: 768px) {
-    right: var(--spacing-xxl);
+  @media (max-width: 556px) {
+    top: 28px;
+    right: 10px;
   }
 
   &:after {

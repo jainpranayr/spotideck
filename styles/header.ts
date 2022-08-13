@@ -11,6 +11,7 @@ const Header = styled.header<IHeader>`
   position: relative;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
   background-color: ${props => props.color || 'var(--grey)'};
+  min-height: 170px;
   height: fit-content;
 
   &:after {

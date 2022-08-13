@@ -97,6 +97,10 @@ const GlobalStyles = styled.createGlobalStyle`
   main {
     position: relative;
     padding: var(--spacing-xxl) 0;
+
+    @media (max-width: 476px) {
+      padding: var(--spacing-xl) 0;
+    }
   }
 
   .page {
