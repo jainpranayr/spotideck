@@ -97,6 +97,11 @@ const Header = styled.header<IHeader>`
         font-size: 8px;
       }
     }
+
+    @media (max-width: 476px) {
+      font-weight: normal;
+      font-size: var(--fz-xs);
+    }
   }
 `
 

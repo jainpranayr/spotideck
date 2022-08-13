@@ -24,7 +24,6 @@ const SectionWrapper = ({ children, title, seeAllLink, breadCrumb }: Props) => (
           </span>
         )}
       </div>
-
       {children}
     </div>
   </Section>

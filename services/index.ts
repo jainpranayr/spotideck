@@ -38,6 +38,18 @@ export const getArtist = (artist_id: string) => {
   return customGet(`/artists/${artist_id}`)
 }
 
+export const getArtistTopTracks = (artist_id: string) => {
+  return customGet(`/artists/${artist_id}/top-tracks?market=ES`)
+}
+
+export const getArtistAlbums = (artist_id: string) => {
+  return customGet(`/artists/${artist_id}/albums?market=ES&offset=0`)
+}
+
+export const getRelatedArtists = (artist_id: string) => {
+  return customGet(`/artists/${artist_id}/related-artists`)
+}
+
 export const getUserInfo = async (): Promise<{
   user: User
   followedArtists: FollowedArtists

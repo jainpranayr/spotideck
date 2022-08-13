@@ -1,18 +1,18 @@
 import Link from 'next/link'
 import { Grid } from '../styles'
-import { Artists } from '../types'
+import { Artist } from '../types'
 
 interface Props {
-  artists: Artists
+  artists: Artist[]
   limit?: number
 }
 
 const ArtistsGrid: React.FC<Props> = ({ artists, limit }) => {
   return (
     <>
-      {artists && artists.items?.length ? (
+      {artists && artists?.length ? (
         <Grid type='artist'>
-          {artists.items.slice(0, limit).map((artist, i) => (
+          {artists.slice(0, limit).map((artist, i) => (
             <li className='grid__item' key={i}>
               <Link href={`/artists/${'A' + artist.id}`} passHref>
                 <div className='grid__item__inner'>

@@ -77,6 +77,7 @@ const Home: NextPage = () => {
                     {user.followers?.total} Follower
                     {user.followers?.total !== 1 ? 's' : ''}
                   </span>
+                  {/* @ts-ignore */}
                   <span>{followedArtists.artists?.total} Following</span>
                 </p>
               </div>
@@ -87,7 +88,7 @@ const Home: NextPage = () => {
       {topArtists && topTracks && playlists && (
         <main>
           <Section title='Top artists this month' seeAllLink='/artists'>
-            <ArtistsGrid artists={topArtists} limit={10} />
+            <ArtistsGrid artists={topArtists.items} limit={10} />
           </Section>
           <Section title='Top tracks this month' seeAllLink='/top-tracks'>
             <TrackList tracks={topTracks.items} limit={10} />

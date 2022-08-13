@@ -5,7 +5,7 @@ export interface Artists extends Context<Artist> {
 }
 
 export interface FollowedArtists {
-  artists: Artists
+  artists: Artist[]
 }
 
 export interface Artist {

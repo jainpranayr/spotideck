@@ -39,7 +39,7 @@ const TopTracks: NextPage = () => {
               activeRange={activeRange}
               setActiveRange={setActiveRange}
             />
-            <ArtistsGrid artists={topArtists} />
+            <ArtistsGrid artists={topArtists.items} />
           </Section>
         </main>
       )}

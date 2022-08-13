@@ -2,6 +2,7 @@ import { AudioFeaturesItems } from './audioFeatures'
 import { ExternalIds, ExternalUrls, ImagesEntity, Context } from './common'
 
 export interface Tracks extends Context<ItemsEntity> {
+  tracks: ItemsEntity[]
   total: number
 }
 
@@ -26,7 +27,7 @@ export interface ItemsEntity {
   audio_features?: AudioFeaturesItems
 }
 
-interface Album {
+export interface Album {
   album_type: string
   artists?: ArtistsEntity[] | null
   available_markets?: (string | null)[] | null
