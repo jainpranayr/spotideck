@@ -28,6 +28,7 @@ export interface ItemsEntity {
 }
 
 export interface Album {
+  popularity: number
   album_type: string
   artists?: ArtistsEntity[] | null
   available_markets?: (string | null)[] | null

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Grid } from '../styles'
 import { Albums } from '../types'
 
@@ -12,15 +13,17 @@ const AlbumsGrid: React.FC<Props> = ({ albums, limit }) => (
       <Grid>
         {albums.items.slice(0, limit).map((album, i) => (
           <li className='grid__item' key={i}>
-            <div className='grid__item__inner'>
-              <div className='grid__item__img'>
-                <img src={album.images?.[0].url} alt={album.name} />
+            <Link href={`/${'D' + album?.id}`} passHref>
+              <div className='grid__item__inner'>
+                <div className='grid__item__img'>
+                  <img src={album.images?.[0].url} alt={album.name} />
+                </div>
+                <h3 className='grid__item__name overflow-ellipsis'>
+                  {album.name}
+                </h3>
+                <p className='grid__item__label'>{album.album_type}</p>
               </div>
-              <h3 className='grid__item__name overflow-ellipsis'>
-                {album.name}
-              </h3>
-              <p className='grid__item__label'>{album.album_type}</p>
-            </div>
+            </Link>
           </li>
         ))}
       </Grid>

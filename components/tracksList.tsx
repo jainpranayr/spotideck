@@ -16,9 +16,11 @@ const TrackList: React.FC<Props> = ({ tracks, limit }) => (
           <li className='track__item' key={i}>
             <div className='track__item__num'>{i + 1}</div>
             <div className='track__item__title-group'>
-              <div className='track__item__img'>
-                <img src={track?.album?.images?.[2].url} alt={track?.name} />
-              </div>
+              {track.album && (
+                <div className='track__item__img'>
+                  <img src={track?.album?.images?.[2].url} alt={track?.name} />
+                </div>
+              )}
               <div className='track__item__name-artist'>
                 <div className='track__item__name overflow-ellipsis'>
                   {track?.name}
@@ -35,9 +37,11 @@ const TrackList: React.FC<Props> = ({ tracks, limit }) => (
                 </div>
               </div>
             </div>
-            <div className='track__item__album overflow-ellipsis'>
-              {track?.album?.name}
-            </div>
+            <Link href={`/${'D' + track?.album?.id}`} passHref>
+              <div className='track__item__album overflow-ellipsis'>
+                {track?.album?.name}
+              </div>
+            </Link>
             <div className='track__item__duration'>
               {formatDuration(track?.duration_ms)}
             </div>

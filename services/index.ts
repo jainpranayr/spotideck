@@ -50,6 +50,14 @@ export const getRelatedArtists = (artist_id: string) => {
   return customGet(`/artists/${artist_id}/related-artists`)
 }
 
+export const getAlbum = (album_id: string) => {
+  return customGet(`/albums/${album_id}`)
+}
+
+export const getAlbumTracks = (album_id: string) => {
+  return customGet(`/albums/${album_id}/tracks`)
+}
+
 export const getUserInfo = async (): Promise<{
   user: User
   followedArtists: FollowedArtists

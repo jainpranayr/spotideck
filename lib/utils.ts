@@ -24,9 +24,40 @@ export const customGet = async (url: string): Promise<any> => {
 }
 
 export const formatDuration = (ms: number) => {
-  const minutes = Math.floor(ms / 60000)
-  const seconds = Math.floor((ms % 60000) / 1000)
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  let res = ''
+  const seconds = Math.floor((ms / 1000) % 60)
+  const minutes = Math.floor((ms / 1000 / 60) % 60)
+  const hours = Math.floor((ms / 1000 / 60 / 60) % 24)
+  if (hours > 0) {
+    res += `${hours}: `
+  }
+  if (minutes > 0) {
+    res += `${minutes}: `
+  }
+  if (seconds > 0) {
+    res += `${seconds}`
+  }
+
+  return res
+}
+
+export const formatDurationHumans = (ms: number) => {
+  let res = ''
+  const seconds = Math.floor((ms / 1000) % 60)
+  const minutes = Math.floor((ms / 1000 / 60) % 60)
+  const hours = Math.floor((ms / 1000 / 60 / 60) % 24)
+
+  if (hours > 0) {
+    res += `${hours}hr `
+  }
+  if (minutes > 0) {
+    res += `${minutes}min `
+  }
+  if (seconds > 0) {
+    res += `${seconds}sec`
+  }
+
+  return res
 }
 
 export const formatWithCommas = (n: number) =>

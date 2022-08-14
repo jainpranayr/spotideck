@@ -17,7 +17,7 @@ import {
   getArtistTopTracks,
   getRelatedArtists,
 } from '../../services'
-import { Header } from '../../styles'
+import { Header, PrimaryBtn } from '../../styles'
 import { Albums, Artist, FollowedArtists, Tracks } from '../../types'
 
 const Artist: NextPage = () => {
@@ -29,9 +29,10 @@ const Artist: NextPage = () => {
   const [relatedArtists, setRelatedArtists] = useState<FollowedArtists>()
   const [loading, setLoading] = useState<boolean>(true)
 
+  const artist_id = typeof id === 'string' ? id.slice(1) : ''
+
   useEffect(() => {
     const fetchArtist = async () => {
-      const artist_id = typeof id === 'string' ? id.slice(1) : ''
       SetArtist(await getArtist(artist_id))
       setTopTracks(await getArtistTopTracks(artist_id))
       setAlbums(await getArtistAlbums(artist_id))
@@ -39,8 +40,8 @@ const Artist: NextPage = () => {
       setLoading(false)
     }
 
-    if (id) fetchArtist()
-  }, [id])
+    if (artist_id) fetchArtist()
+  }, [artist_id])
 
   const avgColor = useAvgColor(artist?.images?.[0]?.url || '')
 
@@ -72,24 +73,26 @@ const Artist: NextPage = () => {
           </Header>
 
           <main>
-            <Section title='Top tracks' breadCrumb={true}>
+            <Section title=''>
+              <PrimaryBtn href={artist.external_urls.spotify}>
+                Listen On Spotify
+              </PrimaryBtn>
+            </Section>
+            <Section title='' breadCrumb={true}>
               {topTracks && (
-                <>
-                  <h2 className='section__heading m-xxl'>Top Tracks</h2>
+                <Section title='Top Tracks'>
                   <TrackList tracks={topTracks?.tracks} limit={10} />
-                </>
+                </Section>
               )}
               {albums && (
-                <>
-                  <h2 className='section__heading m-xxl'>Discography</h2>
+                <Section title='Discography'>
                   <AlbumsGrid albums={albums} limit={10} />
-                </>
+                </Section>
               )}
               {relatedArtists && (
-                <>
-                  <h2 className='section__heading m-xxl'>Fans also like</h2>
+                <Section title='Fans also like'>
                   <ArtistsGrid artists={relatedArtists.artists} limit={10} />
-                </>
+                </Section>
               )}
             </Section>
           </main>

@@ -3,12 +3,13 @@ import { useRouter } from 'next/router'
 import { useState, useEffect, useMemo } from 'react'
 import { Bars, LogOutBtn, Section, TrackList } from '../../components'
 import { useAvgColor } from '../../hooks'
+import { formatDurationHumans } from '../../lib'
 import {
   getAudioFeaturesForTracks,
   getPlaylistById,
   getTracksOfAPlaylist,
 } from '../../services'
-import { Dropdown, Header } from '../../styles'
+import { Dropdown, Header, PrimaryBtn } from '../../styles'
 import { AudioFeatures, Playlist, Tracks } from '../../types'
 
 const Playlist: NextPage = () => {
@@ -20,25 +21,24 @@ const Playlist: NextPage = () => {
   const [sortValue, setSortValue] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(true)
 
+  const playlist_id: string = typeof id === 'string' ? id.slice(1) : ''
+  let duration: number = 0
+
   useEffect(() => {
     const fetchPlaylist = async () => {
-      setPlaylist(
-        await getPlaylistById(typeof id === 'string' ? id.slice(1) : '')
-      )
+      setPlaylist(await getPlaylistById(playlist_id))
       setLoading(false)
     }
 
     const fetchTracks = async () => {
-      setPlaylistTracks(
-        await getTracksOfAPlaylist(typeof id === 'string' ? id.slice(1) : '')
-      )
+      setPlaylistTracks(await getTracksOfAPlaylist(playlist_id))
     }
 
-    if (id) {
+    if (playlist_id) {
       fetchPlaylist()
       fetchTracks()
     }
-  }, [id])
+  }, [playlist_id])
 
   useEffect(() => {
     const fetchAudioFeatures = async () => {
@@ -96,6 +96,9 @@ const Playlist: NextPage = () => {
 
   const sortOptions = ['danceability', 'tempo', 'energy']
   const avgColor = useAvgColor(playlist?.images?.[0]?.url || '')
+  playlistTracks?.items?.map(
+    track => (duration = duration + track.track.duration_ms)
+  )
 
   return (
     <>
@@ -125,12 +128,18 @@ const Playlist: NextPage = () => {
                     {playlist.tracks.total}{' '}
                     {`song${playlist.tracks.total !== 1 ? 's' : ''}`}
                   </span>
+                  <span>{formatDurationHumans(duration)}</span>
                 </p>
               </div>
             </div>
           </Header>
 
           <main>
+            <Section title=''>
+              <PrimaryBtn href={playlist.external_urls.spotify}>
+                Listen On Spotify
+              </PrimaryBtn>
+            </Section>
             <Section title='Playlist' breadCrumb={true}>
               <Dropdown>
                 <select

@@ -55,7 +55,8 @@ const List = styled.ul`
     font-size: var(--fz-md);
   }
 
-  .track__item__artist {
+  .track__item__artist,
+  .track__item__album {
     &:hover,
     &:focus {
       text-decoration: underline;

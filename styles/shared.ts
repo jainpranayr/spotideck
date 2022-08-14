@@ -11,7 +11,7 @@ export const Container = styled.main`
 export const Brand = styled.span`
   color: var(--green);
 `
-export const PrimaryBtn = styled.button`
+export const PrimaryBtn = styled.a`
   display: inline-block;
   background-color: var(--green);
   color: var(--white);
@@ -19,6 +19,7 @@ export const PrimaryBtn = styled.button`
   font-weight: 700;
   font-size: var(--fz-lg);
   padding: var(--spacing-sm) var(--spacing-xl);
+  cursor: pointer;
 
   &:hover,
   &:focus {

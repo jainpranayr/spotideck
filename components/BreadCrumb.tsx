@@ -12,7 +12,10 @@ const convertBreadcrumb = (path: string) => {
     path = 'Playlist'
   } else if (path.match(/^.{23}$/) && path.startsWith('A')) {
     path = 'Artist'
+  } else if (path.match(/^.{23}$/) && path.startsWith('D')) {
+    path = 'Album'
   }
+
   return path
 }
 

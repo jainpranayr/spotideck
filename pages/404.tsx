@@ -15,7 +15,7 @@ const SubHeading = styled.p`
   margin-bottom: 40px;
 `
 
-const Login: NextPage = () => {
+const PageNotFound: NextPage = () => {
   const router = useRouter()
 
   return (
@@ -29,4 +29,4 @@ const Login: NextPage = () => {
   )
 }
 
-export default Login
+export default PageNotFound
