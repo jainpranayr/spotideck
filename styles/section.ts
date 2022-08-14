@@ -36,6 +36,10 @@ const Section = styled.section`
     }
   }
 
+  .section__heading.m-xxl {
+    margin-block: 24px 12px;
+  }
+
   .section__breadCrumb {
     display: flex;
     color: var(--light-grey);

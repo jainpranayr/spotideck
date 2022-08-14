@@ -75,37 +75,19 @@ const Artist: NextPage = () => {
             <Section title='Top tracks' breadCrumb={true}>
               {topTracks && (
                 <>
-                  <h2
-                    className='section__heading'
-                    style={{ marginBlock: '12px' }}>
-                    Top Tracks
-                  </h2>
+                  <h2 className='section__heading m-xxl'>Top Tracks</h2>
                   <TrackList tracks={topTracks?.tracks} limit={10} />
                 </>
               )}
               {albums && (
                 <>
-                  <h2
-                    className='section__heading'
-                    style={{
-                      marginBlockStart: '24px',
-                      marginBlockEnd: '12px',
-                    }}>
-                    Discography
-                  </h2>
+                  <h2 className='section__heading m-xxl'>Discography</h2>
                   <AlbumsGrid albums={albums} limit={10} />
                 </>
               )}
               {relatedArtists && (
                 <>
-                  <h2
-                    className='section__heading'
-                    style={{
-                      marginBlockStart: '24px',
-                      marginBlockEnd: '12px',
-                    }}>
-                    Fans also like
-                  </h2>
+                  <h2 className='section__heading m-xxl'>Fans also like</h2>
                   <ArtistsGrid artists={relatedArtists.artists} limit={10} />
                 </>
               )}

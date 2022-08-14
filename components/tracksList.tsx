@@ -25,7 +25,7 @@ const TrackList: React.FC<Props> = ({ tracks, limit }) => (
                 </div>
                 <div className='track__item__artist overflow-ellipsis'>
                   {track.artists?.map((artist, i) => (
-                    <Link href={artist.external_urls.spotify} key={i}>
+                    <Link href={`/artists/${'A' + artist.id}`} key={i}>
                       <span>
                         {artist.name}
                         {i !== track.artists?.length! - 1 && ', '}
